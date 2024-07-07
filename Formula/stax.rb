@@ -1,12 +1,12 @@
 class Stax < Formula
   desc "Wrapper around git, which helps with stax-like git workflow"
-  homepage "https://github.com/TarasMazepa/stax"
+  homepage "https://staxforgit.com/"
   url "https://github.com/TarasMazepa/stax.git",
-      using: :git,
+      using:  :git,
       branch: "main"
-  version "1.0.0"
+  version "0.6.10"
   head "https://github.com/TarasMazepa/stax.git", using: :git
-  
+
   depends_on "dart-lang/dart/dart" => :build
 
   def install
@@ -14,7 +14,7 @@ class Stax < Formula
 
     cd "cli" do
       system "dart", "pub", "get"
-      system "dart", "compile", "exe", "bin/cli.dart", "-o", "stax"
+      system "dart", "compile", "exe", "bin/cli.dart", "-o", "stax", "-Dversion=#{version}"
       bin.install "stax"
     end
   end
